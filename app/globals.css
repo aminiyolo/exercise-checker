@@ -16,14 +16,21 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body,
+html {
+  position: relative;
+  min-height: 100vh;
+}
+
+.login-bg {
+  background-image: url('../assets/background.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-color {
+  background-color: rgb(41, 76, 125);
 }
 
 @layer utilities {
