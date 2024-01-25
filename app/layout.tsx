@@ -4,6 +4,7 @@ import './globals.css';
 import AuthProvider from '@/context/authContext';
 import Nav from '@/components/nav';
 import Footer from '@/components/footer';
+import RecoilWrapper from '@/components/recoilWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,9 +22,11 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <AuthProvider>
-          <Nav />
-          {children}
-          <Footer />
+          <RecoilWrapper>
+            <Nav />
+            {children}
+            <Footer />
+          </RecoilWrapper>
         </AuthProvider>
       </body>
     </html>
