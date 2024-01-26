@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --bg-color: rgb(41, 76, 125);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,6 +21,9 @@ body,
 html {
   position: relative;
   min-height: 100vh;
+  width: auto;
+  min-width: fit-content;
+  overflow-x: hidden;
 }
 
 .login-bg {
@@ -37,4 +41,45 @@ html {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* calendar */
+.react-calendar {
+  width: 400px;
+  max-width: 100%;
+  background-color: #fff;
+  color: #222;
+  border-radius: 8px;
+  box-shadow: 0 12px 18px rgba(0, 0, 0, 0.2);
+  line-height: 1.125em;
+}
+
+.react-calendar__navigation button {
+  color: var(--bg-color);
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: #fff !important;
+}
+
+.react-calendar__tile--now {
+  background: transparent !important;
+  border-radius: 6px;
+  font-weight: bold;
+  color: black;
+  border: 2px solid var(--bg-color) !important;
+}
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: var(--bg-color) !important;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.react-calendar__tile--active {
+  background: var(--bg-color) !important;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
 }
