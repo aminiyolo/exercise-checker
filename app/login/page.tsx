@@ -1,18 +1,18 @@
 'use client';
-import React from 'react';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 function Page() {
-  const { data: session } = useSession();
-  const router = useRouter();
+  const handleClickLogin = async () => {
+    await signIn('google', {
+      callbackUrl: '/',
+    });
+  };
 
-  if (session) router.push('/');
   return (
     <div className='login-bg flex flex-col items-center justify-center h-[87vh]'>
       <button
-        onClick={() => signIn('google')}
+        onClick={handleClickLogin}
         className='px-4 py-2 bg-black border z-10 flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150'
       >
         <Image
