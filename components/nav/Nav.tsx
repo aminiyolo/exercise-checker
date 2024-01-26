@@ -13,7 +13,7 @@ function Nav() {
   };
 
   return (
-    <nav className='relative flex flex-col bg-color p-3 w-screen items-center text-white rounded-b-sm sm:w-full'>
+    <nav className='relative flex flex-col bg-color p-3 w-screen h-full items-center text-white rounded-b-sm sm:w-full'>
       <>
         <p className='text-2xl mb-2'>Exercise-Checker</p>
         <p className='text-md'>운동 기록 남기기.</p>
