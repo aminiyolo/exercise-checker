@@ -1,5 +1,7 @@
 import React from 'react';
 
+const BUTTONS = ['START', 'PAUSE', 'RESET'];
+
 interface Props {
   handleClickStart: () => void;
   handleClickPause: () => void;
@@ -11,17 +13,21 @@ function Controller({
   handleClickPause,
   handleClickReset,
 }: Props) {
+  const handleClick = {
+    START: handleClickStart,
+    PAUSE: handleClickPause,
+    RESET: handleClickReset,
+  };
   return (
-    <div id='controller'>
-      <button className='m-1' onClick={handleClickStart}>
-        START
-      </button>
-      <button className='m-1' onClick={handleClickPause}>
-        PAUSE
-      </button>
-      <button className='m-1' onClick={handleClickReset}>
-        RESET
-      </button>
+    <div id='controller' className='p-4'>
+      {BUTTONS.map((button) => (
+        <button
+          onClick={handleClick[button]}
+          className='m-1 p-1 border-solid border-2 border-[#284C7C] rounded-md hover:bg-[#284C7C] hover:text-white'
+        >
+          {button}
+        </button>
+      ))}
     </div>
   );
 }
