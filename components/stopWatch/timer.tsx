@@ -38,9 +38,9 @@ function Timer({ minutes, seconds, setSeconds, setMinutes, start }: Props) {
   }, [minutes, seconds, start]);
 
   return (
-    <div id='timer'>
+    <div id='timer' className='p-4'>
       <span>{minutes >= 10 ? minutes : `0${minutes}`}분</span>
-      <span className='p-1' />
+      <span className='p-1'> : </span>
       <span>{seconds >= 10 ? seconds : `0${seconds}`}초</span>
     </div>
   );

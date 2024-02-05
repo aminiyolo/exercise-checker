@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BUTTONS = ['START', 'PAUSE', 'RESET'];
+const BUTTONS = ['START', 'PAUSE', 'RESET'] as const;
 
 interface Props {
   handleClickStart: () => void;

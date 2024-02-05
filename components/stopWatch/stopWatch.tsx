@@ -32,16 +32,16 @@ function StopWatch() {
   }, [min.current, sec.current]);
 
   return (
-    <div className='flex flex-col justify-center items-center h-[20rem] p-6 m-6 w-[33vw]'>
+    <div className='flex flex-col justify-center items-center h-[19.5rem] p-6 m-6 w-[32.5vw] border-solid border-2 border-[#284C7C] rounded-md'>
       <div className='p-4'>
-        <h2>STOP WATCH</h2>
+        <h2 className='text-lg font-semibold'>STOP WATCH</h2>
       </div>
       <Timer
+        start={start}
         minutes={minutes}
         seconds={seconds}
         setMinutes={setMinutes}
         setSeconds={setSeconds}
-        start={start}
       />
       <Controller
         handleClickStart={handleClickStart}

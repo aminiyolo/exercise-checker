@@ -13,7 +13,7 @@ interface Props {
 
 function TimeSetter({ setMinutes, setSeconds, isProcessing, min, sec }: Props) {
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-row p-4'>
       <input
         min={0}
         type='number'
