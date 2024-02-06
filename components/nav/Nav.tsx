@@ -20,7 +20,7 @@ function Nav() {
         {userInfo && (
           <button
             onClick={handleLogout}
-            className='fixed right-3 top-5 p-2 bg-slate-800 rounded-lg'
+            className='absolute right-8 top-5 p-2 bg-slate-800 rounded-lg'
           >
             로그아웃
           </button>
