@@ -26,14 +26,21 @@ export default function SelectBox({
   return (
     <span
       ref={SelectBox}
-      onClick={() => setOpen((prev) => !prev)}
       className={`relative w-[${width}] ${extraCSS}`}
+      onClick={(e) => {
+        e.stopPropagation();
+        setOpen((prev) => !prev);
+      }}
     >
-      <div className='relative flex py-[3px] px-[2px] items-center justify-center border-solid border-2 border-black rounded-[3px]'>
-        <label className='w-full ml-2 text-left text-[1rem] cursor-pointer'>
+      <div className='relative flex py-[2px] px-[1px] items-center justify-center border-solid border-2 border-black rounded-[3px]'>
+        <label
+          className={`w-full ml-2 text-[1rem] cursor-pointer ${
+            selected === '-' ? 'text-center' : 'text-left'
+          }`}
+        >
           {selected}
         </label>
-        <span className='absolute right-2'>
+        <span className='absolute right-2 cursor-pointer'>
           {open ? <RiArrowUpSLine /> : <RiArrowDownSLine />}
         </span>
       </div>

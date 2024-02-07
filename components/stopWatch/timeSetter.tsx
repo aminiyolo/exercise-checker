@@ -1,7 +1,7 @@
 import React, { Dispatch, MutableRefObject, SetStateAction } from 'react';
 
 const commonStyle =
-  'border-solid border-b-2 border-black w-12 text-right focus:outline-none';
+  'border-solid border-b-2 border-black w-10 text-right focus:outline-none';
 
 interface Props {
   setMinutes: Dispatch<SetStateAction<number>>;

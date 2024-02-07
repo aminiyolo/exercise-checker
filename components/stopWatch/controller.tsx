@@ -22,6 +22,7 @@ function Controller({
     <div id='controller' className='p-4'>
       {BUTTONS.map((button) => (
         <button
+          key={button}
           onClick={handleClick[button]}
           className='m-1 p-1 border-solid border-2 border-[#284C7C] rounded-md hover:bg-[#284C7C] hover:text-white'
         >

@@ -15,8 +15,9 @@ function StopWatch() {
 
   const handleClickStart = useCallback(() => {
     if (start) return;
+    if (minutes + seconds === 0) return;
     setStart(true);
-  }, [start]);
+  }, [start, minutes, seconds]);
 
   const handleClickPause = useCallback(() => {
     if (!start) return;
@@ -32,9 +33,9 @@ function StopWatch() {
   }, [min.current, sec.current]);
 
   return (
-    <div className='flex flex-col justify-center items-center h-[19.5rem] p-6 m-6 w-[32.5vw] border-solid border-2 border-[#284C7C] rounded-md'>
+    <div className='flex flex-col justify-center items-center h-[23rem] p-6 m-6 w-[20rem] border-solid border-2 border-[#284C7C] rounded-md mx-auto md:h-[19.5rem] md:w-[29.5rem]'>
       <div className='p-4'>
-        <h2 className='text-lg font-semibold'>STOP WATCH</h2>
+        <h2 className='text-[1.2rem] font-semibold'>STOP WATCH</h2>
       </div>
       <Timer
         start={start}
