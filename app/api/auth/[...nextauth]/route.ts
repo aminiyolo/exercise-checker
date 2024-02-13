@@ -8,5 +8,8 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     }),
   ],
+  session: {
+    maxAge: 720 * 60 * 1000, // 세션 만료 12시간
+  },
 });
 export { handler as GET, handler as POST };
