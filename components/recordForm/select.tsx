@@ -21,7 +21,7 @@ export default function Select({
       <span className='mt-1'>운동 : </span>
       <SelectBox
         open={open}
-        width={'7'}
+        width={'7rem'}
         extraCSS={'ml-2'}
         selected={selectedExercise}
         setOpen={setOpen}

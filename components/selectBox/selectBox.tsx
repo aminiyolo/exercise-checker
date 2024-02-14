@@ -26,7 +26,8 @@ export default function SelectBox({
   return (
     <span
       ref={SelectBox}
-      className={`relative w-[${width}rem] ${extraCSS}`}
+      className={`relative ${extraCSS}`}
+      style={{ width }}
       onClick={(e) => {
         e.stopPropagation();
         setOpen((prev) => !prev);
@@ -47,7 +48,8 @@ export default function SelectBox({
       {/* 셀렉트 리스트 영역 */}
       {open && (
         <div
-          className={`absolute mt-1 border-solid border-2 border-black rounded-[3px] z-2 bg-[#284C7C] text-white w-[${width}rem] h-[${height}rem]`}
+          className='absolute mt-1 border-solid border-2 border-black rounded-[3px] z-2 bg-[#284C7C] text-white'
+          style={{ width, height }}
         >
           {children}
         </div>
