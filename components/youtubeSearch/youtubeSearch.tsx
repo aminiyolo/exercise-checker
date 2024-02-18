@@ -105,7 +105,7 @@ export default function YoutubeSearch() {
   useEffect(() => {
     // Enter 키 입력시
     const keydownEvent = (e: KeyboardEvent) => {
-      if (e.key === 'Enter') handleSearch();
+      if (e.key === 'Enter' && e.isComposing) handleSearch();
     };
 
     window.addEventListener('keydown', keydownEvent);
