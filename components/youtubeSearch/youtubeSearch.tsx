@@ -3,7 +3,10 @@ import useOutsideClick from '@/hook/useOutsideClick';
 import { CSSProperties, useCallback, useEffect, useRef, useState } from 'react';
 import Search from './search';
 import HistoryList from './historyList';
+import axios from 'axios';
+import Video from './video';
 
+const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 export type searchListType = {
   keyword: string;
   id: number;
@@ -15,6 +18,7 @@ export default function YoutubeSearch() {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [isFocus, setIsFocus] = useState(false);
   const [style, setStyle] = useState<CSSProperties>({});
+  const [videoID, setVideoId] = useState('yRkO1qS3ym8');
 
   // 검색창 클릭
   const handleFocus = useCallback(() => {
@@ -51,6 +55,27 @@ export default function YoutubeSearch() {
       localStorage.setItem('search_list', JSON.stringify(newList));
       setSearchList(newList);
       setIsFocus(false);
+
+      // 검색어를 기반으로 한 유튜브 영상 가져오기
+      const getVideo = async () => {
+        try {
+          const { data } = await axios.get(
+            `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}`,
+            {
+              params: {
+                q: `${searchKeyword}`,
+                part: 'snippet',
+                order: 'viewCount',
+              },
+            },
+          );
+          setVideoId(data.items[0].id.videoId);
+        } catch (error) {
+          console.log('ERROR:', error);
+        }
+      };
+
+      getVideo();
     },
     [searchList, searchKeyword],
   );
@@ -94,6 +119,7 @@ export default function YoutubeSearch() {
   }, []);
 
   useOutsideClick(inputRef, () => setIsFocus(false));
+
   return (
     <div>
       <div className='relative p-10'>
@@ -115,7 +141,7 @@ export default function YoutubeSearch() {
           />
         )}
       </div>
-      <div className='p-6'>Video area</div>
+      <Video videoID={videoID} />
     </div>
   );
 }

@@ -25,7 +25,7 @@ export default function Search({
         onClick={handleFocus}
         maxLength={15}
         onChange={(e) => setSearchKeyword(e.target.value)}
-        className='border-solid border-l-2 border-t-2 border-b-2 border-black rounded-l-md focus:outline-none'
+        className='pl-1 border-solid border-l-2 border-t-2 border-b-2 border-black rounded-l-md focus:outline-none'
       />
       <div
         onClick={() => handleSearch()}
