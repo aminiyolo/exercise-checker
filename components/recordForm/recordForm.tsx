@@ -14,7 +14,7 @@ import {
 import { useAlert } from '../alert/useAlert';
 
 export default function RecordForm() {
-  const { openAlert } = useAlert();
+  const { openErrorAlert, openSuccessAlert } = useAlert();
   const [open, setOpen] = useState<boolean>(false);
   const [isModify, setIsModify] = useState<boolean>(false);
   const [records, setRecords] = useState<RecordType[]>([]);
@@ -57,7 +57,7 @@ export default function RecordForm() {
   const handleDelete = useCallback(
     (idx: number) => {
       if (modifyIndex === idx) {
-        openAlert('수정 중인 목록은 삭제할 수 없습니다.');
+        openErrorAlert('수정 중인 목록은 삭제할 수 없습니다.');
         return;
       }
 
@@ -70,12 +70,16 @@ export default function RecordForm() {
 
   // 운동 기록 저장/수정
   const handleSubmit = useCallback(() => {
-    if (!selectedExercise || !count) return;
+    if (!selectedExercise || !count) {
+      return;
+    }
+
     const newRecord = { name: selectedExercise, count, type };
     if (isModify) {
       const copy = [...records];
       copy.splice(modifyIndex, 1, newRecord);
       setRecords(copy);
+      openSuccessAlert('수정을 완료 했습니다.');
     } else {
       setRecords((prev) => [...prev, newRecord]);
     }

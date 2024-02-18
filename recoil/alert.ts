@@ -1,16 +1,19 @@
 import { atom } from 'recoil';
 
-type AlertStateType = {
+export type AlertStateType = 'success' | 'error';
+type AlertState = {
   isOpen: boolean;
   content: string;
+  state: AlertStateType;
   callback?: () => void;
 };
 
-export const AlertState = atom<AlertStateType>({
+export const Alert = atom<AlertState>({
   key: 'alertState',
   default: {
     isOpen: false,
     content: '',
+    state: 'success',
     callback: () => {},
   },
 });

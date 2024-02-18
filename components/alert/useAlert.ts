@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
-import { AlertState } from '@/recoil/alert';
+import { Alert } from '@/recoil/alert';
 import { useRecoilState } from 'recoil';
 
 export const useAlert = () => {
-  const [alertInfo, setAlertInfo] = useRecoilState(AlertState);
+  const [alertInfo, setAlertInfo] = useRecoilState(Alert);
 
-  const openAlert = useCallback(
+  const openSuccessAlert = useCallback(
     (content: string, callback?: () => void) => {
       if (alertInfo.isOpen) {
         return;
@@ -14,6 +14,23 @@ export const useAlert = () => {
       setAlertInfo({
         isOpen: true,
         content,
+        state: 'success',
+        callback,
+      });
+    },
+    [alertInfo.isOpen],
+  );
+
+  const openErrorAlert = useCallback(
+    (content: string, callback?: () => void) => {
+      if (alertInfo.isOpen) {
+        return;
+      }
+
+      setAlertInfo({
+        isOpen: true,
+        content,
+        state: 'error',
         callback,
       });
     },
@@ -24,13 +41,16 @@ export const useAlert = () => {
     setAlertInfo({
       isOpen: false,
       content: '',
+      state: 'success',
     });
   }, []);
 
   return {
     isOpen: alertInfo.isOpen,
     content: alertInfo.content,
-    openAlert,
+    state: alertInfo.state,
+    openSuccessAlert,
+    openErrorAlert,
     closeAlert,
   };
 };
