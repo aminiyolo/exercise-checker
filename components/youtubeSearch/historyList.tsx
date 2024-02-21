@@ -22,7 +22,7 @@ const HistoryList = ({
   return (
     <div
       style={style}
-      className='absolute bg-white p-1 z-10 border-b-2 rounded-md'
+      className='fixed bg-white p-1 z-10 border-b-2 rounded-md'
     >
       <div className='flex justify-between'>
         <h4 className='text-left text-sm mb-1 font-semibold'>최근 검색어</h4>

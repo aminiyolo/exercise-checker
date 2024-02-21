@@ -18,7 +18,7 @@ export default function Search({
 }: Props) {
   return (
     <div className='flex items-center'>
-      <span className='mr-1'>운동 방법 검색: </span>
+      <span className='mr-1'>유튜브 검색: </span>
       <input
         ref={inputRef}
         value={searchKeyword}
