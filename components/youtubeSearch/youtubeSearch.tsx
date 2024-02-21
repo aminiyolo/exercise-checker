@@ -26,10 +26,12 @@ export default function YoutubeSearch() {
       return;
     }
 
-    const { width } = (inputRef.current as HTMLElement).getBoundingClientRect();
+    const { width, left } = (
+      inputRef.current as HTMLElement
+    ).getBoundingClientRect();
     setStyle({
       width: width + 23,
-      left: width - 40,
+      left: left,
     });
     setIsFocus(true);
   }, []);
