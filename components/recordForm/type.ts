@@ -7,7 +7,7 @@ type RecordType = {
   name: ExerciseName;
   count: number;
   type: ExerciseCountType;
+  id: number;
 };
-type EditRecordType = RecordType & { idx: number };
 
-export type { ExerciseNameType, ExerciseCountType, RecordType, EditRecordType };
+export type { ExerciseNameType, ExerciseCountType, RecordType };
